@@ -1,6 +1,15 @@
 package fr.istic.aco.editor;
 
 public class EngineImpl implements Engine {
+	
+	private Selection selection;
+	private Buffer buffer;
+	
+	public EngineImpl(Selection selection, Buffer buffer) {
+		this.selection = selection;
+		this.buffer = buffer;
+	}
+	
     /**
      * Provides access to the selection control object
      *
@@ -8,8 +17,7 @@ public class EngineImpl implements Engine {
      */
     @Override
     public Selection getSelection() {
-        // TODO
-        return null;
+        return selection;
     }
 
     /**
@@ -19,8 +27,8 @@ public class EngineImpl implements Engine {
      */
     @Override
     public String getBufferContents() {
-        // TODO
-        return null;
+ 
+        return buffer.readFile();
     }
 
     /**
@@ -70,7 +78,7 @@ public class EngineImpl implements Engine {
      */
     @Override
     public void insert(String s) {
-
+    	buffer.writeFile(s, selection.getBeginIndex(), selection.getEndIndex());
     }
 
     /**
@@ -78,6 +86,6 @@ public class EngineImpl implements Engine {
      */
     @Override
     public void delete() {
-
+    	buffer.writeFile("", selection.getBeginIndex(), selection.getEndIndex());
     }
 }

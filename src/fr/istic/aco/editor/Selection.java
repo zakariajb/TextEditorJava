@@ -46,7 +46,7 @@ public interface Selection {
      * @param beginIndex, must be within the buffer index range
      * @throws IndexOutOfBoundsException if the beginIndex is out of bounds
      */
-    void setBeginIndex(int beginIndex);
+    void setBeginIndex(int beginIndex) throws Exception;
 
     /**
      * Changes the value of the end index of the selection
@@ -54,7 +54,7 @@ public interface Selection {
      * @param endIndex, must be within the buffer index range
      * @throws IndexOutOfBoundsException if the beginIndex is out of bounds
      */
-    void setEndIndex(int endIndex);
+    void setEndIndex(int endIndex) throws Exception;
 
 
 }
