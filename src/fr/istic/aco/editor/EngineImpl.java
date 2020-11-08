@@ -4,10 +4,12 @@ public class EngineImpl implements Engine {
 	
 	private Selection selection;
 	private Buffer buffer;
+	private static final Buffer clipboard = new Clipboard(); 
 	
 	public EngineImpl(Selection selection, Buffer buffer) {
 		this.selection = selection;
 		this.buffer = buffer;
+		clipboard.writeFile("", 0, clipboard.getEndIndex());
 	}
 	
     /**
@@ -38,8 +40,7 @@ public class EngineImpl implements Engine {
      */
     @Override
     public String getClipboardContents() {
-        // TODO
-        return null;
+        return clipboard.readFile();
     }
 
     /**
@@ -49,7 +50,8 @@ public class EngineImpl implements Engine {
      */
     @Override
     public void cutSelectedText() {
-        // TODO
+    	  copySelectedText();
+    	  insert("");
     }
 
     /**
@@ -59,7 +61,8 @@ public class EngineImpl implements Engine {
      */
     @Override
     public void copySelectedText() {
-        // TODO
+    	clipboard.writeFile(buffer.readFile(selection.getBeginIndex(), selection.getEndIndex()),
+  			  0,clipboard.getEndIndex());
     }
 
     /**
@@ -68,7 +71,7 @@ public class EngineImpl implements Engine {
      */
     @Override
     public void pasteClipboard() {
-        // TODO
+        insert(getClipboardContents());
     }
 
     /**

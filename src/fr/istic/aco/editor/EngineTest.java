@@ -46,27 +46,42 @@ class EngineTest {
          engine.insert("");
          engine.getSelection().setBeginIndex(5);
        	 engine.getSelection().setEndIndex(12);
-       	engine.insert("completed");
+         engine.insert("completed");
          assertEquals("TEST completed",engine.getBufferContents());
     }
 
     @Test
-    void getClipboardContents() {
-        todo();
+    void getClipboardContents() throws Exception{
+    	 assertEquals("", engine.getClipboardContents());
     }
 
     @Test
-    void cutSelectedText() {
-        todo();
+    void cutSelectedText() throws Exception{
+    	engine.insert("zakaria jabrane");
+    	engine.getSelection().setBeginIndex(0);
+   	 	engine.getSelection().setEndIndex(8);
+   	 	engine.cutSelectedText();
+   	 	assertEquals("zakaria ", engine.getClipboardContents());
+   	    assertEquals("jabrane",engine.getBufferContents());
     }
 
     @Test
-    void copySelectedText() {
-        todo();
+    void copySelectedText() throws Exception{
+    	engine.insert("zakaria jabrane");
+    	engine.getSelection().setBeginIndex(0);
+   	 	engine.getSelection().setEndIndex(7);
+   	 	engine.copySelectedText();
+   	 	assertEquals("zakaria", engine.getClipboardContents());
     }
 
     @Test
-    void pasteClipboard() {
-        todo();
+    void pasteClipboard() throws Exception{
+    	engine.insert("zakaria jabrane");
+    	engine.getSelection().setBeginIndex(0);
+   	 	engine.getSelection().setEndIndex(7);
+   	 	engine.copySelectedText();
+   	    engine.getSelection().setEndIndex(0);
+   	    engine.pasteClipboard();
+   	 	assertEquals("zakariazakaria jabrane", engine.getBufferContents());
     }
 }

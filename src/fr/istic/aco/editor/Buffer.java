@@ -3,11 +3,19 @@ import java.nio.file.Path;
 public interface Buffer {
 	
 
+	
+	
+	public String readFile() ;
+	
+	
 	/**
-	 * return a string of all contents in the file
+	 * return a string of contents in the file form a beginning index to an ending index
+	 * beginning index is inclusive, ending index is exclusive : content [beginning index, ending index[
 	 * @param path is the path to the file
 	 */
-	String readFile();
+	public String readFile(int beginIndex, int endIndex) ;
+	
+	
 	
 	/**
 	 * writes a give string into a given interval 
@@ -16,6 +24,7 @@ public interface Buffer {
 	 * @param endIndexthe the final index of the interval
 	 * @return
 	 */
+	
 	void writeFile(String s, int beginIndex, int endIndex);
 	
 	int getEndIndex() ;
