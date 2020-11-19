@@ -5,7 +5,7 @@ public interface Buffer {
 
 	
 	
-	public String readFile() ;
+	public String readContents() ;
 	
 	
 	/**
@@ -13,7 +13,7 @@ public interface Buffer {
 	 * beginning index is inclusive, ending index is exclusive : content [beginning index, ending index[
 	 * @param path is the path to the file
 	 */
-	public String readFile(int beginIndex, int endIndex) ;
+	public String readContents(int beginIndex, int endIndex) ;
 	
 	
 	
@@ -25,7 +25,7 @@ public interface Buffer {
 	 * @return
 	 */
 	
-	void writeFile(String s, int beginIndex, int endIndex);
+	void writeNewContent(String s, int beginIndex, int endIndex);
 	
 	int getEndIndex() ;
 	

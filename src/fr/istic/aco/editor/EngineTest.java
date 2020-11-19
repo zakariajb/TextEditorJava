@@ -1,6 +1,5 @@
 package fr.istic.aco.editor;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.logging.Logger;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,16 +7,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EngineTest {
-	
-	Path path = Paths.get("test.txt");
-	Buffer buffer = new BufferImpl(path);
-	Selection selection = new SelectionImpl(buffer);
+	private static final Logger LOGGER = Logger.getLogger( EngineTest.class.getName() );
+
 	private Engine engine;
 	
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
-    	 engine = new EngineImpl(selection, buffer);
+    	
+    	 engine = new EngineImpl();
+    	
     	 //engine.insert("");
     }
 
@@ -27,9 +26,11 @@ class EngineTest {
     @Test
     @DisplayName("Buffer must be empty after initialisation")
     void getSelection() {
+    	   LOGGER.info(  engine.getClipboardContents());
         Selection selection = engine.getSelection();
         assertEquals(selection.getBufferBeginIndex(),selection.getBeginIndex());
         assertEquals("",engine.getBufferContents());
+     
     }
 
     @Test
