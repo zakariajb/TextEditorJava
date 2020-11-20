@@ -13,67 +13,34 @@ import java.util.Set;
 
 public class BufferImpl implements Buffer {
 	
-	private Path path;
+	private String buffer;
 	
 	
-	public BufferImpl(Path path) {
-		Set<PosixFilePermission> perameters = PosixFilePermissions.fromString("rwxr-x---");
-		FileAttribute<Set<PosixFilePermission>> attributs = PosixFilePermissions.asFileAttribute(perameters);
-		this.path = path;
-		if(!Files.exists(path)) {
-			try {
-				Files.createFile(path, attributs);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}else {
-
-			writeFile("",0,getEndIndex());
-		}
-		
+	public BufferImpl() {
+		buffer = new String();
 	           
 		}
 	
 	
 	@Override
-	public String readFile() {
-		String content = new String();
-		List<String> lines = new ArrayList<>();
-		
-		try {
-			lines = Files.readAllLines(path, Charset.defaultCharset());    
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
-		
-		for(String line : lines) content+= line;
-		  
-		
-		return content;
+	public String readContents() {
+		return buffer;
 		
 	}
 	
 	
 	@Override
-	public String readFile(int beginIndex, int endIndex) {	
-		return readFile().substring(beginIndex, endIndex);
+	public String readContents(int beginIndex, int endIndex) {	
+		return readContents().substring(beginIndex, endIndex);
 	}
 	
 	
 	@Override
-	public void writeFile(String s, int beginIndex, int endIndex) {
+	public void writeNewContent(String s, int beginIndex, int endIndex) {
 		
-		String content = readFile();
-		
-		String updatedContent = finalContent(content, s, beginIndex, endIndex);		
-		
-	        try {
-				Files.writeString(path, updatedContent, Charset.defaultCharset());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		String content = readContents();
+		String Updatedcontent = finalContent(content, s, beginIndex, endIndex);
+		buffer = Updatedcontent;
 			
 	}
 	
@@ -90,7 +57,7 @@ public class BufferImpl implements Buffer {
 
 	
 	public int getEndIndex() {
-		return readFile().length();	
+		return readContents().length();	
 		}
 	
 	public int getBeginIndex() {
