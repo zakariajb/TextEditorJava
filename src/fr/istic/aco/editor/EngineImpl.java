@@ -4,12 +4,12 @@ public class EngineImpl implements Engine {
 	
 	private Selection selection;
 	private Buffer buffer;
-	private static final Buffer clipboard = new Clipboard(); 
+	private Buffer clipboard;
 	
-	public EngineImpl(Selection selection, Buffer buffer) {
-		this.selection = selection;
-		this.buffer = buffer;
-		clipboard.writeFile("", 0, clipboard.getEndIndex());
+	public EngineImpl() {
+		buffer = new BufferImpl();
+		selection = new SelectionImpl(buffer);
+		clipboard = new Clipboard(); 
 	}
 	
     /**
@@ -30,7 +30,7 @@ public class EngineImpl implements Engine {
     @Override
     public String getBufferContents() {
  
-        return buffer.readFile();
+        return buffer.readContents();
     }
 
     /**
@@ -40,7 +40,7 @@ public class EngineImpl implements Engine {
      */
     @Override
     public String getClipboardContents() {
-        return clipboard.readFile();
+        return clipboard.readContents();
     }
 
     /**
@@ -61,7 +61,7 @@ public class EngineImpl implements Engine {
      */
     @Override
     public void copySelectedText() {
-    	clipboard.writeFile(buffer.readFile(selection.getBeginIndex(), selection.getEndIndex()),
+    	clipboard.writeNewContent(buffer.readContents(selection.getBeginIndex(), selection.getEndIndex()),
   			  0,clipboard.getEndIndex());
     }
 
@@ -81,7 +81,7 @@ public class EngineImpl implements Engine {
      */
     @Override
     public void insert(String s) {
-    	buffer.writeFile(s, selection.getBeginIndex(), selection.getEndIndex());
+    	buffer.writeNewContent(s, selection.getBeginIndex(), selection.getEndIndex());
     }
 
     /**
@@ -89,6 +89,6 @@ public class EngineImpl implements Engine {
      */
     @Override
     public void delete() {
-    	buffer.writeFile("", selection.getBeginIndex(), selection.getEndIndex());
+    	buffer.writeNewContent("", selection.getBeginIndex(), selection.getEndIndex());
     }
 }
