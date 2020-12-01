@@ -82,6 +82,13 @@ public class EngineImpl implements Engine {
     @Override
     public void insert(String s) {
     	buffer.writeNewContent(s, selection.getBeginIndex(), selection.getEndIndex());
+    	try {
+    		selection.setEndIndex(selection.getBeginIndex()+s.length());
+			selection.setBeginIndex(selection.getEndIndex());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     /**
@@ -90,5 +97,6 @@ public class EngineImpl implements Engine {
     @Override
     public void delete() {
     	buffer.writeNewContent("", selection.getBeginIndex(), selection.getEndIndex());
+    
     }
 }

@@ -34,7 +34,10 @@ class EngineTest {
     }
 
     @Test
+    @DisplayName("Buffer contents test")
+
     void getBufferContents() throws Exception {
+
     	 engine.insert("zakaria jabrane");
     	 engine.getSelection().setBeginIndex(2);
     	 engine.getSelection().setEndIndex(5);
@@ -47,8 +50,10 @@ class EngineTest {
          engine.insert("");
          engine.getSelection().setBeginIndex(5);
        	 engine.getSelection().setEndIndex(12);
+    
          engine.insert("completed");
-         assertEquals("TEST completed",engine.getBufferContents());
+         engine.insert(" v2");
+         assertEquals("TEST completed v2",engine.getBufferContents());
     }
 
     @Test
