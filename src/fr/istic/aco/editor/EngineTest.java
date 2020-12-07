@@ -26,7 +26,6 @@ class EngineTest {
     @Test
     @DisplayName("Buffer must be empty after initialisation")
     void getSelection() {
-    	   LOGGER.info(  engine.getClipboardContents());
         Selection selection = engine.getSelection();
         assertEquals(selection.getBufferBeginIndex(),selection.getBeginIndex());
         assertEquals("",engine.getBufferContents());
@@ -39,18 +38,23 @@ class EngineTest {
     void getBufferContents() throws Exception {
 
     	 engine.insert("zakaria jabrane");
+
     	 engine.getSelection().setBeginIndex(2);
     	 engine.getSelection().setEndIndex(5);
          engine.insert("TEST");
+
          engine.getSelection().setBeginIndex(6);
     	 engine.getSelection().setEndIndex(8);
          engine.insert("");
+
          engine.getSelection().setBeginIndex(0);
     	 engine.getSelection().setEndIndex(2);
          engine.insert("");
+
          engine.getSelection().setBeginIndex(5);
-       	 engine.getSelection().setEndIndex(12);
-    
+    	 engine.getSelection().setEndIndex(15);
+         engine.insert("");
+
          engine.insert("completed");
          engine.insert(" v2");
          assertEquals("TEST completed v2",engine.getBufferContents());

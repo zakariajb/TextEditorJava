@@ -81,14 +81,16 @@ public class EngineImpl implements Engine {
      */
     @Override
     public void insert(String s) {
+    	indexesFix();
     	buffer.writeNewContent(s, selection.getBeginIndex(), selection.getEndIndex());
     	try {
     		selection.setEndIndex(selection.getBeginIndex()+s.length());
 			selection.setBeginIndex(selection.getEndIndex());
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    	
     }
 
     /**
@@ -99,4 +101,21 @@ public class EngineImpl implements Engine {
     	buffer.writeNewContent("", selection.getBeginIndex(), selection.getEndIndex());
     
     }
+    
+    /**
+	 * switches begin index and index if begin index is greater than end index
+	 */
+	private void indexesFix() {
+		if(selection.getBeginIndex() > selection.getEndIndex()) {
+			int tmp = selection.getBeginIndex();
+			try {
+				selection.setBeginIndex(selection.getEndIndex());
+				selection.setEndIndex(tmp);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+					
+	}
 }

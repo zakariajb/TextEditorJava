@@ -12,13 +12,11 @@ public class Clipboard implements Buffer {
 
 	@Override
 	public String readContents() {
-		// TODO Auto-generated method stub
 		return clipboard.readContents();
 	}
 
 	@Override
 	public String readContents(int beginIndex, int endIndex) {
-		// TODO Auto-generated method stub
 		return clipboard.readContents(beginIndex, endIndex);
 	}
 
@@ -30,13 +28,11 @@ public class Clipboard implements Buffer {
 
 	@Override
 	public int getEndIndex() {
-		// TODO Auto-generated method stub
 		return clipboard.getEndIndex();
 	}
 
 	@Override
 	public int getBeginIndex() {
-		// TODO Auto-generated method stub
 		return clipboard.getBeginIndex();
 	}
 

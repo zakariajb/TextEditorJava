@@ -11,7 +11,8 @@ public interface Buffer {
 	/**
 	 * return a string of contents in the file form a beginning index to an ending index
 	 * beginning index is inclusive, ending index is exclusive : content [beginning index, ending index[
-	 * @param path is the path to the file
+	 * @param beginIndex must be within the buffer index range
+	 * @param endIndex must be within the buffer index range
 	 */
 	public String readContents(int beginIndex, int endIndex) ;
 	
@@ -20,15 +21,26 @@ public interface Buffer {
 	/**
 	 * writes a give string into a given interval 
 	 * @param s string to insert
-	 * @param beginIndex the first index of the interval
-	 * @param endIndexthe the final index of the interval
-	 * @return
+	 * @param beginIndex must be within the buffer index range
+	 * @param endIndex must be within the buffer index range
 	 */
 	
 	void writeNewContent(String s, int beginIndex, int endIndex);
 	
+	/**
+     * Provides the index of the first "virtual" character
+     * after the end of the buffer
+     *
+     * @return the post end buffer index
+     */
+	
 	int getEndIndex() ;
 	
+	/**
+     * Provides the first writable index in the buffer (0)
+     *
+     * @return the buffer first index (0)
+     */
 	int getBeginIndex();
 	
 }

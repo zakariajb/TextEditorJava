@@ -28,22 +28,49 @@ public class SelectionImpl implements Selection {
 
 	@Override
 	public int getBufferEndIndex() {
-		// TODO Auto-generated method stub
 		return buffer.getEndIndex();
 	}
 
+	
+	 /**
+     * Changes the value of the begin index of the selection
+     *
+     * @param index, must be within the buffer index range
+     * fixes index to 0 when it's < 0 and to buffer's last index if it's > buffer end index
+     * switches indexes if begin index > end index
+     */
+	
 	@Override
-	public void setBeginIndex(int beginIndex) throws Exception {
-		if(beginIndex < 0 || endIndex > getBufferEndIndex() )
-			throw new Exception("impossible index !!");
-		this.beginIndex = beginIndex;
+	public void setBeginIndex(int index) throws Exception {
+		if(index < 0) index = 0;
+		if(index > getBufferEndIndex()) index = getBufferEndIndex();
+		beginIndex = index;
+		
+	
+		
 	}
 
+    /**
+     * Changes the value of the end index of the selection
+     *
+     * @param index, must be within the buffer index range
+     * fixes index to 0 when it's < 0 and to buffer's last index if it's > buffer end index
+     * switches indexes if begin index > end index
+     */
+    
+    
 	@Override
-	public void setEndIndex(int endIndex) throws Exception {
-		if(beginIndex < 0 || endIndex > getBufferEndIndex() )
-			throw new Exception("impossible index !!");
-		this.endIndex = endIndex;
+	public void setEndIndex(int index) {
+		if(index < 0) index = 0;
+		if(index > getBufferEndIndex()) index = getBufferEndIndex();
+ 		
+		this.endIndex = index;
+
+		
 	}
+	
+
+	
+	
 
 }
