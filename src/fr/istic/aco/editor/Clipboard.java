@@ -15,11 +15,7 @@ public class Clipboard implements Buffer {
 		return clipboard.readContents();
 	}
 
-	@Override
-	public String readContents(int beginIndex, int endIndex) {
-		return clipboard.readContents(beginIndex, endIndex);
-	}
-
+	
 	@Override
 	public void writeNewContent(String s, int beginIndex, int endIndex) {
 		 clipboard.writeNewContent(s, beginIndex, endIndex);
@@ -34,6 +30,12 @@ public class Clipboard implements Buffer {
 	@Override
 	public int getBeginIndex() {
 		return clipboard.getBeginIndex();
+	}
+
+	@Override
+	public String readContents(int beginIndex, int endIndex) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
