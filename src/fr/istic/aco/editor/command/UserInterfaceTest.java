@@ -12,15 +12,25 @@ public class UserInterfaceTest {
 
 		private Engine engine;
 		private UserInterface userInterface;
+<<<<<<< HEAD
+=======
+		History history;
+>>>>>>> 3afc1f3313237a8a89ff1005d403319b290b0aa7
 		
 
 	    @org.junit.jupiter.api.BeforeEach
 	    void setUp() {
 	    	
 	    	 engine = new EngineImpl();
+<<<<<<< HEAD
 	   
 
 	    	 userInterface = new UserInterfaceImpl(null);
+=======
+	    	 history = new HistoryImp(engine);
+
+	    	 userInterface = new UserInterfaceImpl(null, history);
+>>>>>>> 3afc1f3313237a8a89ff1005d403319b290b0aa7
 	    	 //engine.insert("");
 	    }
 
@@ -234,7 +244,78 @@ public class UserInterfaceTest {
 	    }
 	    
 	    
+<<<<<<< HEAD
 	   
+=======
+	    @Test
+	    @DisplayName("redo ")
+	    void redo() throws Exception {
+
+	 	    	   Command insertCommand = new InsertCommand(engine, "zakaria jabrane ");
+	 	    	   userInterface.setCommand(insertCommand);
+	 	    	   userInterface.option();
+	 	    	   
+	 	    	   Command cutCommand = new CutSelectedTextCommand(engine);
+	 	    	   userInterface.setCommand(cutCommand);
+	 	    	   engine.getSelection().setBeginIndex(0);
+	 	    	   engine.getSelection().setEndIndex(8);
+	 	    	   userInterface.option();
+	 	    	   
+	 	    	   Command past = new PastClipboardCommand(engine);
+	 	    	   userInterface.setCommand(past);
+	 	    	   engine.getSelection().setBeginIndex(8);
+	 	    	   engine.getSelection().setEndIndex(8);
+	 	    	   userInterface.option();
+	 	    	   
+	 	           assertEquals("jabrane zakaria ",engine.getBufferContents());
+	 	           userInterface.undo();
+	 	           userInterface.undo();
+	 	           userInterface.undo();
+	 	           userInterface.redo();
+
+	 	           assertEquals("jabrane ",engine.getBufferContents());
+
+	          	     
+	 	           
+	 	    }
+	    	   
+
+	    @Test
+	    @DisplayName("undo ")
+	    void undo() throws Exception {
+	    	
+			System.out.println("*****************************0");
+
+
+	 	    	   Command insertCommand = new InsertCommand(engine, "zakaria jabrane ");
+	 	    	   userInterface.setCommand(insertCommand);
+	 	    	   userInterface.option();
+	 	    	   
+	 	    	   Command cutCommand = new CutSelectedTextCommand(engine);
+	 	    	   userInterface.setCommand(cutCommand);
+	 	    	   engine.getSelection().setBeginIndex(0);
+	 	    	   engine.getSelection().setEndIndex(8);
+	 	    	   userInterface.option();
+	 	    	   
+	 	    	   Command past = new PastClipboardCommand(engine);
+	 	    	   userInterface.setCommand(past);
+	 	    	   engine.getSelection().setBeginIndex(8);
+	 	    	   engine.getSelection().setEndIndex(8);
+	 	    	   userInterface.option();
+	 	    	   
+	 	           assertEquals("jabrane zakaria ",engine.getBufferContents());
+	 	           
+	 	           
+	 	           userInterface.undo();
+	 	           userInterface.undo();
+	 	           userInterface.undo();
+	 	           assertEquals("zakaria jabrane ",engine.getBufferContents());
+
+
+	 	           
+	 	    }
+	    	       
+>>>>>>> 3afc1f3313237a8a89ff1005d403319b290b0aa7
 	    
 
 

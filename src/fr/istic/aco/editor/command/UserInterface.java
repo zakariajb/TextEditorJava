@@ -22,5 +22,22 @@ public interface UserInterface {
 	 */
 	void reply();
 	
+<<<<<<< HEAD
 	
+=======
+	/**
+	 * restores engine previous state
+	 * @throws Exception 
+	 */
+
+	void redo() throws Exception;
+	
+	
+	/**
+	 * restores engine next state
+	 * @throws Exception 
+	 */
+
+	void undo() throws Exception;
+>>>>>>> 3afc1f3313237a8a89ff1005d403319b290b0aa7
 }
