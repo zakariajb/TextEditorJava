@@ -4,7 +4,9 @@ public interface Buffer {
 	
 
 	
-	
+	/**
+	 * return the string of the buffer
+	 */
 	public String readContents() ;
 	
 	
