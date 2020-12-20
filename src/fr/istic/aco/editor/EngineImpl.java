@@ -51,7 +51,7 @@ public class EngineImpl implements Engine {
     @Override
     public void cutSelectedText() {
     	  copySelectedText();
-    	  insert("");
+    	  delete();
     }
 
     /**
@@ -98,7 +98,7 @@ public class EngineImpl implements Engine {
      */
     @Override
     public void delete() {
-    	buffer.writeNewContent("", selection.getBeginIndex(), selection.getEndIndex());
+    	insert("");
     
     }
     

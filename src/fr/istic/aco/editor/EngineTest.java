@@ -45,16 +45,17 @@ class EngineTest {
 
          engine.getSelection().setBeginIndex(6);
     	 engine.getSelection().setEndIndex(8);
-         engine.insert("");
+         engine.delete();
 
-         engine.getSelection().setBeginIndex(0);
+         engine.getSelection().setBeginIndex(-1);
     	 engine.getSelection().setEndIndex(2);
-         engine.insert("");
+         engine.delete();
+       
+     	 engine.getSelection().setBeginIndex(15);
+         engine.getSelection().setEndIndex(5);
+         engine.delete(); 
 
-         engine.getSelection().setBeginIndex(5);
-    	 engine.getSelection().setEndIndex(15);
-         engine.insert("");
-
+         engine.getSelection().setEndIndex(300);
          engine.insert("completed");
          engine.insert(" v2");
          assertEquals("TEST completed v2",engine.getBufferContents());
