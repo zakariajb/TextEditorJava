@@ -1,7 +1,9 @@
 package fr.istic.aco.editor.command;
 import fr.istic.aco.editor.Engine;
 
-
+/**
+ * delete using command design pattern
+ */
 public class DeleteCommand implements Command{
 	
 
