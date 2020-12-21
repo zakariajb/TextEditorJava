@@ -9,7 +9,16 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Engine engine = new EngineImpl();
+<<<<<<< HEAD
 		UserInterface userInterface = new UserInterfaceImpl(null);
+=======
+<<<<<<< HEAD
+		UserInterface userInterface = new UserInterfaceImpl(null);
+=======
+		History history = new HistoryImp(engine);
+		UserInterface userInterface = new UserInterfaceImpl(null, history);
+>>>>>>> 3afc1f3313237a8a89ff1005d403319b290b0aa7
+>>>>>>> 66597c93ee802714ed857d0161661816322609ba
 		
 		
 		
@@ -76,7 +85,33 @@ public class Main {
 				  userInterface.option();
 	  
 				break;
+<<<<<<< HEAD
 	
+=======
+<<<<<<< HEAD
+	
+=======
+			case "undo":
+				  
+				
+			try {
+				userInterface.undo();
+			} catch (Exception e1) {
+				System.out.println("cannot undo");
+			}
+				  
+				  
+				break;
+			case "redo":
+				try {
+					userInterface.undo();
+				} catch (Exception e1) {
+					System.out.println("cannot redo");
+				}
+				  
+				break;
+>>>>>>> 3afc1f3313237a8a89ff1005d403319b290b0aa7
+>>>>>>> 66597c93ee802714ed857d0161661816322609ba
 			case "quit":
 				System.out.println("goodbye");
 				  return;

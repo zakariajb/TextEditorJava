@@ -8,9 +8,6 @@ public class UserInterfaceImpl implements UserInterface {
 	
 	private Command command;
 	private Command lastCommand;
-	
-	// this is better be manipulated in history class
-  
 
 
 	/**
@@ -18,6 +15,7 @@ public class UserInterfaceImpl implements UserInterface {
 	 */
 	public UserInterfaceImpl(Command command ) {
 		this.command = command;
+
 	}
 	
 	
@@ -39,7 +37,6 @@ public class UserInterfaceImpl implements UserInterface {
 		command.execute();
 		lastCommand = command;
 
-
 		
 	}
 
@@ -51,7 +48,5 @@ public class UserInterfaceImpl implements UserInterface {
 	public void reply() {
 		lastCommand.execute();
 	}
-	
-
 
 }

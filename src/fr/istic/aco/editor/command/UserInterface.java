@@ -22,5 +22,4 @@ public interface UserInterface {
 	 */
 	void reply();
 	
-	
 }
