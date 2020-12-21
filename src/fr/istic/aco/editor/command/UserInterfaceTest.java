@@ -12,13 +12,7 @@ public class UserInterfaceTest {
 
 		private Engine engine;
 		private UserInterface userInterface;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-		History history;
->>>>>>> 3afc1f3313237a8a89ff1005d403319b290b0aa7
->>>>>>> 66597c93ee802714ed857d0161661816322609ba
+
 		
 
 	    @org.junit.jupiter.api.BeforeEach
